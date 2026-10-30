@@ -315,7 +315,7 @@ fun SpiralCarousel(
 ) {
     BoxWithConstraints(
         modifier = modifier
-            .pointerInput(apps.size) {
+            .pointerInput(apps.size, selectedIndex) {
                 var drag = 0f
 
                 detectVerticalDragGestures(
@@ -428,9 +428,10 @@ fun GlassIcon(
         modifier = Modifier
             .size(size)
             .graphicsLayer {
-                shadowElevation = if (focused) 22f else 7f
-                shape = this@Box.let { shape }
-                clip = true
+    shadowElevation = if (focused) 22f else 7f
+    this.shape = shape
+    clip = true
+}
             }
             .background(
                 Brush.linearGradient(
